@@ -1,0 +1,5 @@
+id_financeiro,id_contrato,status_pagamento,data_pagamento
+1001,101,Pago,2026-02-04
+1002,102,Em Aberto,
+1003,103,Em Aberto,
+1004,104,Pago,2026-02-14

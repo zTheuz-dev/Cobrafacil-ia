@@ -1,0 +1,5 @@
+id_contrato,id_cliente,tipo_contrato,valor_mensal,data_vencimento
+101,1,Contrato Mensal,1500.00,2026-02-05
+102,2,Contrato Completo,2500.00,2026-02-10
+103,3,Contrato Mensal,1800.00,2026-01-28
+104,4,Contrato Completo,3200.00,2026-02-15
