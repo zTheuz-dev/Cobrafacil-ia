@@ -1,41 +1,34 @@
 # Pitch (3 minutos)
 
-> [!TIP]
-> Você pode usar alguns slides pra apoiar no seu Pitch e mostrar sua solução na prática.
- 
-## Roteiro Sugerido
+## 1️⃣ O Problema (30s)
 
-### 1. O Problema (30 seg)
-> Qual dor do cliente você resolve?
+Muitas pequenas e médias empresas têm dificuldade no controle de inadimplência. O acompanhamento de contratos, vencimentos e pagamentos costuma ser feito manualmente em planilhas, o que gera erros no cálculo de multa e juros, falta de padronização e perda de receita. Além disso, a conferência manual consome tempo e aumenta o risco de decisões baseadas em informações incorretas.
 
-[Sua descrição aqui]
 
-### 2. A Solução (1 min)
-> Como seu agente resolve esse problema?
 
-[Sua descrição aqui]
+## 2️⃣ A Solução (1 min)
 
-### 3. Demonstração (1 min)
-> Mostre o agente funcionando (pode ser gravação de tela)
+O **CobraFácil AI** é um agente especializado em controle de inadimplência empresarial. Ele analisa dados de clientes, contratos e pagamentos, identifica automaticamente atrasos e calcula multa e juros com base nas regras definidas pela empresa.
 
-[Descreva o que será mostrado]
+O agente utiliza apenas os dados fornecidos, não inventa informações e segue fórmulas claras de cálculo. Ao final, ele apresenta dias de atraso, valor original, multa, juros e valor total atualizado, de forma objetiva e profissional.
 
-### 4. Diferencial e Impacto (30 seg)
-> Por que essa solução é inovadora e qual é o impacto dela na sociedade?
 
-[Sua descrição aqui]
 
----
+## 3️⃣ Demonstração (1 min)
 
-## Checklist do Pitch
+Na demonstração, apresento os arquivos de clientes, contratos, financeiro e regras de cobrança. Em seguida, solicito a análise de um cliente específico.
 
-- [ ] Duração máxima de 3 minutos
-- [ ] Problema claramente definido
-- [ ] Solução demonstrada na prática
-- [ ] Diferencial explicado
-- [ ] Áudio e vídeo com boa qualidade
+O agente identifica se o pagamento está “Em Aberto” ou “Pago”. Se estiver em aberto, calcula automaticamente os dias de atraso, aplica multa e juros e informa o valor total atualizado. Se estiver pago, informa que não há pendências.
 
----
+
+
+## 4️⃣ Diferencial e Impacto (30s)
+
+O diferencial do CobraFácil AI é o foco exclusivo em cobrança empresarial, com regras rígidas para evitar invenção de dados e garantir cálculos padronizados. Além disso, pode rodar localmente com modelos leves, tornando a solução acessível.
+
+O impacto é a redução de erros manuais, maior controle financeiro e apoio à tomada de decisão, especialmente para pequenas empresas que não possuem sistemas complexos de gestão.
+
+
 
 ## Link do Vídeo
 
