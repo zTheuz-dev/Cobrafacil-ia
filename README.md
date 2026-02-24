@@ -1,70 +1,91 @@
-# 🤖 Agente Financeiro Inteligente com IA Generativa
-
-## Contexto
-
-Os assistentes virtuais no setor financeiro estão evoluindo de simples chatbots reativos para **agentes inteligentes e proativos**. Neste desafio, você vai idealizar e prototipar um agente financeiro que utiliza IA Generativa para:
-
-- **Antecipar necessidades** ao invés de apenas responder perguntas
-- **Personalizar** sugestões com base no contexto de cada cliente
-- **Cocriar soluções** financeiras de forma consultiva
-- **Garantir segurança** e confiabilidade nas respostas (anti-alucinação)
-
-> [!TIP]
-> Na pasta [`examples/`](./examples/) você encontra referências de implementação para cada etapa deste desafio.
+Perfeito 👍
+Vou manter **exatamente o mesmo layout**, mas adaptar totalmente para o seu projeto **CobraFácil-IA**, já como projeto finalizado (não como desafio educativo).
 
 ---
 
-## O Que Você Deve Entregar
+# 🤖 CobraFácil-IA — Agente Inteligente de Controle de Inadimplência
+
+## Contexto
+
+O controle de inadimplência é um dos maiores desafios das pequenas e médias empresas. Muitas organizações ainda dependem de planilhas manuais para acompanhar contratos, vencimentos e pagamentos, o que aumenta erros no cálculo de multa e juros.
+
+O **CobraFácil-IA** é um agente inteligente especializado em **análise de inadimplência empresarial**, utilizando IA Generativa para:
+
+* **Identificar pagamentos em atraso automaticamente**
+* **Calcular multa e juros com base em regras definidas**
+* **Padronizar respostas e evitar erros humanos**
+* **Garantir segurança e evitar alucinação de dados**
+
+O agente utiliza exclusivamente dados estruturados fornecidos no sistema e segue regras rígidas de cálculo e escopo.
+
+---
+
+## O Que o Projeto Entrega
 
 ### 1. Documentação do Agente
 
-Defina **o que** seu agente faz e **como** ele funciona:
+O CobraFácil-IA foi desenvolvido com foco específico em controle de cobrança empresarial.
 
-- **Caso de Uso:** Qual problema financeiro ele resolve? (ex: consultoria de investimentos, planejamento de metas, alertas de gastos)
-- **Persona e Tom de Voz:** Como o agente se comporta e se comunica?
-- **Arquitetura:** Fluxo de dados e integração com a base de conhecimento
-- **Segurança:** Como evitar alucinações e garantir respostas confiáveis?
+* **Caso de Uso:** Analisar contratos, verificar status de pagamento e calcular valores atualizados com multa e juros.
+* **Persona e Tom de Voz:** Profissional, objetivo e técnico, focado exclusivamente em cobrança.
+* **Arquitetura:** Leitura de arquivos CSV e JSON → montagem de contexto → envio para LLM → resposta estruturada.
+* **Segurança:** O agente utiliza apenas dados fornecidos no contexto, não inventa informações e não responde fora do escopo de inadimplência.
 
-📄 **Template:** [`docs/01-documentacao-agente.md`](./docs/01-documentacao-agente.md)
+📄 **Documentação:** [`docs/01-documentacao-agente.md`](./docs/01-documentacao-agente.md)
 
 ---
 
 ### 2. Base de Conhecimento
 
-Utilize os **dados mockados** disponíveis na pasta [`data/`](./data/) para alimentar seu agente:
+O agente utiliza dados estruturados na pasta [`data/`](./data/):
 
-| Arquivo | Formato | Descrição |
-|---------|---------|-----------|
-| `transacoes.csv` | CSV | Histórico de transações do cliente |
-| `historico_atendimento.csv` | CSV | Histórico de atendimentos anteriores |
-| `perfil_investidor.json` | JSON | Perfil e preferências do cliente |
-| `produtos_financeiros.json` | JSON | Produtos e serviços disponíveis |
+| Arquivo          | Formato | Descrição                                           |
+| ---------------- | ------- | --------------------------------------------------- |
+| `clientes.csv`   | CSV     | Dados cadastrais do cliente (nome, CNPJ, contato)   |
+| `contrato.csv`   | CSV     | Tipo de contrato, valor mensal e data de vencimento |
+| `financeiro.csv` | CSV     | Status do pagamento (Pago ou Em Aberto)             |
+| `regras.json`    | JSON    | Percentual de multa e juros por dia                 |
 
-Você pode adaptar ou expandir esses dados conforme seu caso de uso.
+Esses dados são utilizados para montar o contexto completo antes da análise do modelo.
 
-📄 **Template:** [`docs/02-base-conhecimento.md`](./docs/02-base-conhecimento.md)
+📄 **Documentação:** [`docs/02-base-conhecimento.md`](./docs/02-base-conhecimento.md)
 
 ---
 
 ### 3. Prompts do Agente
 
-Documente os prompts que definem o comportamento do seu agente:
+O comportamento do CobraFácil-IA é controlado por um **System Prompt rigoroso**, que define:
 
-- **System Prompt:** Instruções gerais de comportamento e restrições
-- **Exemplos de Interação:** Cenários de uso com entrada e saída esperada
-- **Tratamento de Edge Cases:** Como o agente lida com situações limite
+* Uso exclusivo dos dados fornecidos
+* Proibição de invenção de informações
+* Cálculo apenas quando o status for "Em Aberto"
+* Estrutura obrigatória de resposta com:
 
-📄 **Template:** [`docs/03-prompts.md`](./docs/03-prompts.md)
+  * Dias de atraso
+  * Valor original
+  * Multa
+  * Juros
+  * Total atualizado
+
+Também são definidos:
+
+* Exemplos de cálculo
+* Tratamento de perguntas fora do escopo
+* Respostas para dados incompletos
+
+📄 **Documentação:** [`docs/03-prompts.md`](./docs/03-prompts.md)
 
 ---
 
 ### 4. Aplicação Funcional
 
-Desenvolva um **protótipo funcional** do seu agente:
+O projeto possui um protótipo funcional que:
 
-- Chatbot interativo (sugestão: Streamlit, Gradio ou similar)
-- Integração com LLM (via API ou modelo local)
-- Conexão com a base de conhecimento
+* Lê os dados via **Pandas**
+* Monta o contexto dinamicamente
+* Calcula dias de atraso com base na data atual
+* Envia as informações para o modelo LLM (modelo local via Ollama)
+* Retorna resposta estruturada de cobrança
 
 📁 **Pasta:** [`src/`](./src/)
 
@@ -72,78 +93,81 @@ Desenvolva um **protótipo funcional** do seu agente:
 
 ### 5. Avaliação e Métricas
 
-Descreva como você avalia a qualidade do seu agente:
+A qualidade do agente foi avaliada com base em:
 
-**Métricas Sugeridas:**
-- Precisão/assertividade das respostas
-- Taxa de respostas seguras (sem alucinações)
-- Coerência com o perfil do cliente
+**Métricas Utilizadas:**
 
-📄 **Template:** [`docs/04-metricas.md`](./docs/04-metricas.md)
+* Correção dos cálculos de multa e juros
+* Consistência com os dados fornecidos
+* Ausência de alucinações
+* Respeito ao escopo de cobrança
+
+O modelo utilizado foi o **Llama 3.2 3B Instruct (Q4_K_M)** rodando localmente, garantindo leveza e baixo consumo de recursos.
+
+📄 **Documentação:** [`docs/04-metricas.md`](./docs/04-metricas.md)
 
 ---
 
 ### 6. Pitch
 
-Grave um **pitch de 3 minutos** (estilo elevador) apresentando:
+O projeto inclui um pitch explicando:
 
-- Qual problema seu agente resolve?
-- Como ele funciona na prática?
-- Por que essa solução é inovadora?
+* O problema da inadimplência empresarial
+* Como o CobraFácil-IA automatiza cálculos
+* O impacto na redução de erros e melhoria do fluxo de caixa
 
-📄 **Template:** [`docs/05-pitch.md`](./docs/05-pitch.md)
+📄 **Documentação:** [`docs/05-pitch.md`](./docs/05-pitch.md)
 
 ---
 
-## Ferramentas Sugeridas
+## Ferramentas Utilizadas
 
-Todas as ferramentas abaixo possuem versões gratuitas:
-
-| Categoria | Ferramentas |
-|-----------|-------------|
-| **LLMs** | [ChatGPT](https://chat.openai.com/), [Copilot](https://copilot.microsoft.com/), [Gemini](https://gemini.google.com/), [Claude](https://claude.ai/), [Ollama](https://ollama.ai/) |
-| **Desenvolvimento** | [Streamlit](https://streamlit.io/), [Gradio](https://www.gradio.app/), [Google Colab](https://colab.research.google.com/) |
-| **Orquestração** | [LangChain](https://www.langchain.com/), [LangFlow](https://www.langflow.org/), [CrewAI](https://www.crewai.com/) |
-| **Diagramas** | [Mermaid](https://mermaid.js.org/), [Draw.io](https://app.diagrams.net/), [Excalidraw](https://excalidraw.com/) |
+| Categoria                | Ferramentas                    |
+| ------------------------ | ------------------------------ |
+| **LLM Local**            | Ollama + Llama 3.2 3B Instruct |
+| **Desenvolvimento**      | Python + Pandas                |
+| **Manipulação de Dados** | CSV e JSON                     |
+| **Execução Local**       | Ambiente Python local          |
 
 ---
 
 ## Estrutura do Repositório
 
 ```
-📁 lab-agente-financeiro/
+📁 cobrafacil-ia/
 │
 ├── 📄 README.md
 │
-├── 📁 data/                          # Dados mockados para o agente
-│   ├── historico_atendimento.csv     # Histórico de atendimentos (CSV)
-│   ├── perfil_investidor.json        # Perfil do cliente (JSON)
-│   ├── produtos_financeiros.json     # Produtos disponíveis (JSON)
-│   └── transacoes.csv                # Histórico de transações (CSV)
+├── 📁 data/                          
+│   ├── clientes.csv                 
+│   ├── contrato.csv                
+│   ├── financeiro.csv               
+│   └── regras.json                  
 │
-├── 📁 docs/                          # Documentação do projeto
-│   ├── 01-documentacao-agente.md     # Caso de uso e arquitetura
-│   ├── 02-base-conhecimento.md       # Estratégia de dados
-│   ├── 03-prompts.md                 # Engenharia de prompts
-│   ├── 04-metricas.md                # Avaliação e métricas
-│   └── 05-pitch.md                   # Roteiro do pitch
+├── 📁 docs/                          
+│   ├── 01-documentacao-agente.md     
+│   ├── 02-base-conhecimento.md       
+│   ├── 03-prompts.md                 
+│   ├── 04-metricas.md                
+│   └── 05-pitch.md                   
 │
-├── 📁 src/                           # Código da aplicação
-│   └── app.py                        # (exemplo de estrutura)
+├── 📁 src/                           
+│   └── app.py                        
 │
-├── 📁 assets/                        # Imagens e diagramas
-│   └── ...
-│
-└── 📁 examples/                      # Referências e exemplos
-    └── README.md
+└── 📁 assets/                        
+    └── ...
 ```
 
 ---
 
-## Dicas Finais
+## Considerações Finais
 
-1. **Comece pelo prompt:** Um bom system prompt é a base de um agente eficaz
-2. **Use os dados mockados:** Eles garantem consistência e evitam problemas com dados sensíveis
-3. **Foque na segurança:** No setor financeiro, evitar alucinações é crítico
-4. **Teste cenários reais:** Simule perguntas que um cliente faria de verdade
-5. **Seja direto no pitch:** 3 minutos passam rápido, vá ao ponto
+1. O agente é especializado exclusivamente em controle de inadimplência.
+2. Todas as respostas são baseadas em dados fornecidos.
+3. O cálculo segue regras fixas de multa e juros.
+4. O modelo roda localmente, garantindo baixo custo.
+5. O sistema pode ser expandido para integração futura com ERP ou CRM.
+
+---
+
+Se quiser, posso agora deixar ele com uma pegada mais “profissional corporativa” (menos acadêmica) para parecer projeto real de mercado.
