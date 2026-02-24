@@ -1,8 +1,3 @@
-Perfeito 👍
-Vou manter **exatamente o mesmo layout**, mas adaptar totalmente para o seu projeto **CobraFácil-IA**, já como projeto finalizado (não como desafio educativo).
-
----
-
 # 🤖 CobraFácil-IA — Agente Inteligente de Controle de Inadimplência
 
 ## Contexto
@@ -170,4 +165,3 @@ O projeto inclui um pitch explicando:
 
 ---
 
-Se quiser, posso agora deixar ele com uma pegada mais “profissional corporativa” (menos acadêmica) para parecer projeto real de mercado.
